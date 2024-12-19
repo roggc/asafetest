@@ -10,7 +10,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <div>
+    <div className="bg-white text-black dark:bg-black dark:text-white">
       <h1>Dashboard</h1>
       <p>Welcome, {session.user?.name}!</p>
     </div>
