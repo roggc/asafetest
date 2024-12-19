@@ -7,8 +7,8 @@ export default function MyLayout({
 }>) {
   return (
     <>
-      <header className="h-12 flex items-center px-4">
-        <h1 className="text-lg font-semibold">Mi Aplicación</h1>
+      <header className="h-12 flex items-center justify-between px-4">
+        <h1 className="text-lg font-semibold">A-SAFE Test App</h1>
         <ThemeSwitcher />
       </header>
       <div className="flex flex-1">
