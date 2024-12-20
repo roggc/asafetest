@@ -20,7 +20,7 @@ export default function MyLayout({
           {/* Barra Lateral */}
           <AppSidebar />
           {/* Contenido Principal */}
-          <main className="flex-1 p-4 overflow-auto">
+          <main className="flex-1 flex flex-col p-4 overflow-auto">
             <SidebarTrigger />
             {children}
           </main>
