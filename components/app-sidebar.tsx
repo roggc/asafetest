@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const availableItems = [
   { title: "Home", url: "/", icon: Home },
@@ -20,6 +21,7 @@ const availableItems = [
 
 export function AppSidebar() {
   const { status } = useSession();
+  const pathname = usePathname();
   const items =
     status === "authenticated" ? availableItems : availableItems.slice(0, 1);
 
@@ -34,7 +36,7 @@ export function AppSidebar() {
               ) : (
                 items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton asChild isActive={pathname === item.url}>
                       <Link
                         href={item.url}
                         className="flex items-center space-x-2 p-2 hover:bg-gray-300 rounded"
