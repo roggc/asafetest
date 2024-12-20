@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useIntersectionObserver } from "./use-intersection-observer";
 import { Crypto } from "../types/crypto";
+import { CryptoCard } from "../ui/crypto-card";
 
 export default function InfiniteScroll() {
   const [items, setItems] = useState<Crypto[]>([]);
@@ -34,16 +35,21 @@ export default function InfiniteScroll() {
   });
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <ul className="space-y-4">
         {items.map((item) => (
-          <li key={item.id}>
-            <h2 className="text-lg font-semibold">{item.name}</h2>
+          <li key={item.id} className="flex justify-center">
+            <CryptoCard
+              name={item.name}
+              image={item.image}
+              symbol={item.symbol}
+              currentPrice={item.current_price}
+            />
           </li>
         ))}
       </ul>
       <div ref={loader} className="h-10 flex items-center justify-center">
-        {loading && <p>Cargando más elementos...</p>}
+        {loading && <p>Loading more elements...</p>}
       </div>
     </div>
   );
