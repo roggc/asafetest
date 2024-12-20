@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Gauge, List, Target } from "lucide-react";
+import { Home, Gauge, List, Bitcoin } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -42,8 +42,8 @@ export function AppSidebar() {
                     href="/"
                     className="flex items-center space-x-2 p-2 hover:bg-gray-300 rounded"
                   >
-                    <Target />
-                    <span>A-SAFE Test</span>
+                    <Bitcoin />
+                    <span>CryptoTracker Pro</span>
                   </Link>
                 </SidebarMenuButton>
                 {state === "expanded" && <SidebarTrigger />}
