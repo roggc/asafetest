@@ -31,12 +31,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-black dark:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-black dark:text-white h-screen flex`}
       >
         <Providers>
           <SidebarProvider>
             <AppSidebar />
-            <main className="flex-1 flex flex-col">
+            <main className="flex-1 flex flex-col overflow-hidden">
               <MyLayout>{children}</MyLayout>
             </main>
           </SidebarProvider>
