@@ -1,35 +1,34 @@
-import ThemeSwitcher from "@/app/ui/theme-switcher";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import HandleSession from "@/app/ui/handle-session";
+// "use client";
 
-export default async function MyLayout({
+import ThemeSwitcher from "@/app/ui/theme-switcher";
+import HandleSession from "@/app/ui/handle-session";
+// import { useEffect, useRef } from "react";
+// import { useSetAtom } from "@/app/atoms";
+
+export default function MyLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const mainRef = useRef<HTMLDivElement | null>(null);
+  // const setMain = useSetAtom("main");
+
+  // useEffect(() => {
+  //   if (mainRef.current) {
+  //     console.log("setting main");
+  //     setMain(mainRef.current);
+  //   }
+  // }, []);
+
   return (
-    <div className="flex flex-col h-screen">
-      {/* Encabezado */}
-      <header className="h-12 flex items-center justify-between px-4 bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))] border-b border-[hsl(var(--sidebar-border))]">
-        <h1 className="text-lg font-semibold">A-SAFE Test App</h1>
+    <div className="flex flex-col flex-1">
+      <header className="h-12 flex items-center justify-end px-4 bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))] border-b border-[hsl(var(--sidebar-border))]">
         <div className="flex items-center space-x-4">
           <HandleSession />
           <ThemeSwitcher />
         </div>
       </header>
-      {/* Contenedor Principal */}
-      <div className="flex flex-1 overflow-hidden">
-        <SidebarProvider>
-          {/* Barra Lateral */}
-          <AppSidebar />
-          {/* Contenido Principal */}
-          <main className="flex-1 flex flex-col p-4 overflow-auto">
-            <SidebarTrigger />
-            {children}
-          </main>
-        </SidebarProvider>
-      </div>
+      <div className="flex flex-1  p-4 overflow-auto">{children}</div>
     </div>
   );
 }
