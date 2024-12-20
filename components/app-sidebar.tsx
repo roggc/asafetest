@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Gauge } from "lucide-react";
+import { Home, Gauge, List, Target } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -9,6 +9,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail,
+  SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -17,17 +20,37 @@ import { usePathname } from "next/navigation";
 const availableItems = [
   { title: "Home", url: "/", icon: Home },
   { title: "Dashboard", url: "/dashboard", icon: Gauge },
+  { title: "List", url: "/list", icon: List },
 ];
 
 export function AppSidebar() {
   const { status } = useSession();
   const pathname = usePathname();
+  const { state } = useSidebar();
   const items =
     status === "authenticated" ? availableItems : availableItems.slice(0, 1);
 
   return (
-    <Sidebar className="top-[--header-height]" collapsible="icon">
+    <Sidebar collapsible="icon">
       <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem className="flex items-center justify-between ">
+                <SidebarMenuButton asChild>
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-2 p-2 hover:bg-gray-300 rounded"
+                  >
+                    <Target />
+                    <span>A-SAFE Test</span>
+                  </Link>
+                </SidebarMenuButton>
+                {state === "expanded" && <SidebarTrigger />}
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -52,6 +75,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarRail />
     </Sidebar>
   );
 }
