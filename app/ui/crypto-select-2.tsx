@@ -93,6 +93,7 @@ export function CryptoSelect({
                       onSelectCrypto(crypto.id);
                       setOpen(false);
                     }}
+                    className="cursor-pointer"
                   >
                     <Check
                       className={cn(

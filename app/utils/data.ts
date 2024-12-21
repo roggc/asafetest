@@ -1,6 +1,6 @@
 export async function fetchCryptoData(cryptoId: string) {
   try {
-    const response = await fetch(`/api/fetchCryptoData?cryptoID=${cryptoId}`);
+    const response = await fetch(`/api/fetchCryptoData?cryptoId=${cryptoId}`);
     if (!response.ok) {
       throw new Error("Failed to fetch crypto data");
     }

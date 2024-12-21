@@ -11,13 +11,14 @@ const options = {
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const cryptoId = searchParams.get("cryptoId") ?? "bitcoin";
+  const cryptoId = searchParams.get("cryptoId") ?? "";
   const url = `https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart?vs_currency=usd&days=30&interval=daily`;
 
   try {
     const response = await fetch(url, options);
 
     if (!response.ok) {
+      console.log(response);
       throw new Error("Error fetching data from Coingecko API");
     }
 
