@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import { useIntersectionObserver } from "./use-intersection-observer";
-import { Crypto } from "../types/crypto";
-import { CryptoCard } from "../ui/crypto-card";
+import { Crypto } from "@/app/types/crypto";
+import { CryptoCard } from "@/app/ui/crypto-card";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -18,7 +18,9 @@ export default function InfiniteScroll() {
     if (loading) return;
     setLoading(true);
     try {
-      const response = await fetch(`/api/fetchItems?page=${page}`);
+      const response = await fetch(
+        `/api/fetchCrypto?page=${page}&perPage=5&action=list`
+      );
       if (!response.ok) {
         throw new Error("Error fetching data from Coingecko API");
       }

@@ -1,6 +1,8 @@
 export async function fetchCryptoData(cryptoId: string) {
   try {
-    const response = await fetch(`/api/fetchCryptoData?cryptoId=${cryptoId}`);
+    const response = await fetch(
+      `/api/fetchCrypto?cryptoId=${cryptoId}&action=data`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch crypto data");
     }
@@ -18,7 +20,7 @@ export async function fetchCryptoData(cryptoId: string) {
 export async function fetchCryptoList(page = 1, perPage = 50) {
   try {
     const response = await fetch(
-      `/api/fetchCryptoList?page=${page}&perPage=${perPage}`
+      `/api/fetchCrypto?page=${page}&perPage=${perPage}&action=list`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch crypto list");
