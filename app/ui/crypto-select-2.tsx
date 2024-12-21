@@ -69,20 +69,18 @@ export function CryptoSelect({
           aria-expanded={open}
           className="w-full justify-between"
         >
-          {selectedCrypto
-            ? selectedCrypto.name
-            : "Selecciona una criptomoneda..."}
+          {selectedCrypto ? selectedCrypto.name : "Select a cryptocurrency..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command>
           <CommandInput
-            placeholder="Buscar criptomoneda..."
+            placeholder="Search cryptocurrency..."
             onValueChange={setSearch}
           />
           <CommandList>
-            <CommandEmpty>No se encontraron criptomonedas.</CommandEmpty>
+            <CommandEmpty>No cryptocurrencies found.</CommandEmpty>
             <CommandGroup
               className="max-h-60 overflow-y-auto"
               onScroll={handleScrollToBottom}
@@ -95,6 +93,7 @@ export function CryptoSelect({
                       onSelectCrypto(crypto.id);
                       setOpen(false);
                     }}
+                    className="cursor-pointer"
                   >
                     <Check
                       className={cn(
@@ -108,7 +107,7 @@ export function CryptoSelect({
                   </CommandItem>
                 ))
               ) : (
-                <CommandItem>Cargando criptomonedas...</CommandItem>
+                <CommandItem>Loading cryptocurrencies...</CommandItem>
               )}
             </CommandGroup>
           </CommandList>
