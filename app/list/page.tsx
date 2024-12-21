@@ -4,12 +4,15 @@ import React, { useState, useRef, useCallback } from "react";
 import { useIntersectionObserver } from "./use-intersection-observer";
 import { Crypto } from "../types/crypto";
 import { CryptoCard } from "../ui/crypto-card";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function InfiniteScroll() {
   const [items, setItems] = useState<Crypto[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const loader = useRef(null);
+  const { status } = useSession();
 
   const loadMoreItems = useCallback(async () => {
     if (loading) return;
@@ -33,6 +36,14 @@ export default function InfiniteScroll() {
     onIntersect: loadMoreItems,
     enabled: !loading,
   });
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
+    redirect("/");
+  }
 
   return (
     <div className="container mx-auto">
