@@ -18,7 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CryptoSelect } from "@/app/ui/crypto-select-2";
+import { CryptoSelect } from "@/app/ui/crypto-select";
 import { fetchCryptoData, fetchCryptoList } from "@/app/utils/data";
 import { formatDate } from "@/app/utils/date";
 import { Loader2 } from "lucide-react";
@@ -103,7 +103,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-gray-100 p-6 rounded-lg">
+    <div className="flex flex-col w-full h-full bg-gray-100 p-6 rounded-lg overflow-auto">
       <div className="w-full max-w-xs mb-6">
         <CryptoSelect
           cryptoList={cryptoList}

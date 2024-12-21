@@ -18,7 +18,6 @@ export async function GET(request: NextRequest) {
     const response = await fetch(url, options);
 
     if (!response.ok) {
-      console.log(response);
       throw new Error("Error fetching data from Coingecko API");
     }
 

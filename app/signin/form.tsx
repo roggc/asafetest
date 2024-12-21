@@ -54,7 +54,7 @@ export default function AuthForm({
     if (result?.error) {
       setError(true);
     } else {
-      redirect("/dashboard");
+      redirect("/");
     }
   }
 

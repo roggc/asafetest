@@ -6,29 +6,18 @@ import Link from "next/link";
 import { Bitcoin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-// import { useEffect, useRef } from "react";
-// import { useSetAtom } from "@/app/atoms";
 
 export default function MyLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const mainRef = useRef<HTMLDivElement | null>(null);
-  // const setMain = useSetAtom("main");
-
-  // useEffect(() => {
-  //   if (mainRef.current) {
-  //     console.log("setting main");
-  //     setMain(mainRef.current);
-  //   }
-  // }, []);
   const isMobile = useIsMobile();
 
   return (
     <div className="flex flex-col flex-1 h-screen">
       <header className="h-12 flex items-center justify-between px-4 bg-[hsl(var(--sidebar-background))] text-[hsl(var(--sidebar-foreground))] border-b border-[hsl(var(--sidebar-border))] fixed top-0 left-0 right-0 z-10">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-1">
           {isMobile && <SidebarTrigger />}
           <Link
             href="/"
