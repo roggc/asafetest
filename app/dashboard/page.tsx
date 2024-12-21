@@ -103,7 +103,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-gray-100 p-6 rounded-lg">
+    <div className="flex flex-col w-full h-full bg-gray-100 p-6 rounded-lg overflow-auto">
       <div className="w-full max-w-xs mb-6">
         <CryptoSelect
           cryptoList={cryptoList}
