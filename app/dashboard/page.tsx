@@ -18,7 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CryptoSelect } from "@/app/ui/crypto-select-2";
+import { CryptoSelect } from "@/app/ui/crypto-select";
 import { fetchCryptoData, fetchCryptoList } from "@/app/utils/data";
 import { formatDate } from "@/app/utils/date";
 import { Loader2 } from "lucide-react";

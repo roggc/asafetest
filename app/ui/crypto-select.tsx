@@ -10,6 +10,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/ui/command";
 import {
   Popover,
@@ -33,10 +34,12 @@ export function CryptoSelect({
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const [page, setPage] = React.useState(1);
+  //   console.log(cryptoList);
 
-  const filteredCryptos = cryptoList.filter((crypto) =>
+  const filteredCryptos = cryptoList?.filter((crypto) =>
     crypto.name.toLowerCase().includes(search.toLowerCase())
   );
+  //   console.log(filteredCryptos);
 
   const handleScrollToBottom = (e: React.UIEvent<HTMLDivElement>) => {
     const bottom =
@@ -51,6 +54,12 @@ export function CryptoSelect({
     }
   };
 
+  //   React.useEffect(() => {
+  //     if (page > 1) {
+  //       onLoadMore(page);
+  //     }
+  //   }, [page]);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -60,43 +69,48 @@ export function CryptoSelect({
           aria-expanded={open}
           className="w-full justify-between"
         >
-          {selectedCrypto
-            ? selectedCrypto.name
-            : "Selecciona una criptomoneda..."}
+          {selectedCrypto ? selectedCrypto.name : "Select a cryptocurrency..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command>
           <CommandInput
-            placeholder="Buscar criptomoneda..."
+            placeholder="Search cryptocurrency..."
             onValueChange={setSearch}
           />
-          <CommandEmpty>No se encontraron criptomonedas.</CommandEmpty>
-          <CommandGroup
-            className="max-h-60 overflow-y-auto"
-            onScroll={handleScrollToBottom}
-          >
-            {filteredCryptos.map((crypto) => (
-              <CommandItem
-                key={crypto.id}
-                onSelect={() => {
-                  onSelectCrypto(crypto.id);
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    selectedCrypto.id === crypto.id
-                      ? "opacity-100"
-                      : "opacity-0"
-                  )}
-                />
-                {crypto.name}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          <CommandList>
+            <CommandEmpty>No cryptocurrencies found.</CommandEmpty>
+            <CommandGroup
+              className="max-h-60 overflow-y-auto"
+              onScroll={handleScrollToBottom}
+            >
+              {filteredCryptos?.length > 0 ? (
+                filteredCryptos?.map((crypto) => (
+                  <CommandItem
+                    key={crypto.id}
+                    onSelect={() => {
+                      onSelectCrypto(crypto.id);
+                      setOpen(false);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        selectedCrypto.id === crypto.id
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                    {crypto.name}
+                  </CommandItem>
+                ))
+              ) : (
+                <CommandItem>Loading cryptocurrencies...</CommandItem>
+              )}
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>

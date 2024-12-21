@@ -6,23 +6,12 @@ import Link from "next/link";
 import { Bitcoin } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-// import { useEffect, useRef } from "react";
-// import { useSetAtom } from "@/app/atoms";
 
 export default function MyLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const mainRef = useRef<HTMLDivElement | null>(null);
-  // const setMain = useSetAtom("main");
-
-  // useEffect(() => {
-  //   if (mainRef.current) {
-  //     console.log("setting main");
-  //     setMain(mainRef.current);
-  //   }
-  // }, []);
   const isMobile = useIsMobile();
 
   return (
