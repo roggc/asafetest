@@ -26,7 +26,6 @@ export async function fetchCryptoList(page = 1, perPage = 50) {
       throw new Error("Failed to fetch crypto list");
     }
     const data = await response.json();
-    // console.log(data);
     return data.map((crypto: any) => ({
       id: crypto.id,
       name: crypto.name,

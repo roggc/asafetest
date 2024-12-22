@@ -9,15 +9,13 @@ interface User {
   password: string;
 }
 
-// Almacén de usuarios en memoria para propósitos de demostración
 const users: User[] = [
   {
     id: "1",
     name: "John Doe",
     email: "john@example.com",
-    password: await bcrypt.hash("password123", 10), // Contraseña pre-hasheada
+    password: await bcrypt.hash("password123", 10),
   },
-  // Agrega más usuarios según sea necesario
 ];
 
 export const authOptions: AuthOptions = {
