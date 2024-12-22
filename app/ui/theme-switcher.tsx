@@ -8,7 +8,6 @@ export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // Asegura que el componente se ha montado para evitar errores de hidratación
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;

@@ -32,7 +32,6 @@ export default function AuthForm({
 }: {
   setError: (error: boolean) => void;
 }) {
-  // 1. Define your form.
   const { watch, ...form } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,10 +40,7 @@ export default function AuthForm({
     },
   });
 
-  // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     const { email, password } = values;
     const result = await signIn("credentials", {
       redirect: false,
@@ -58,13 +54,10 @@ export default function AuthForm({
     }
   }
 
-  // Observa los valores actuales de los campos de email y password
   const emailValue = watch("email");
   const passwordValue = watch("password");
 
-  // Utiliza un efecto para detectar cambios en los valores observados
   useEffect(() => {
-    // Cuando cualquiera de los campos cambia, establece setError en false
     setError(false);
   }, [emailValue, passwordValue]);
 

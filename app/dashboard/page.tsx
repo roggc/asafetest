@@ -47,7 +47,6 @@ export default function Dashboard() {
           fetchCryptoData("bitcoin"),
         ]);
         setCryptoList(initialCryptoList);
-        // console.log(initialCryptoList);
         setChartData(initialChartData);
       } catch (err) {
         setError("Failed to load initial data. Please try again later.");
@@ -78,7 +77,6 @@ export default function Dashboard() {
   const handleLoadMore = async (page: number) => {
     try {
       const newCryptos = await fetchCryptoList(page);
-      //   console.log(newCryptos);
       if (!Array.isArray(newCryptos)) {
         throw new Error("La lista de nuevas criptomonedas no es un array.");
       }

@@ -34,12 +34,10 @@ export function CryptoSelect({
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const [page, setPage] = React.useState(1);
-  //   console.log(cryptoList);
 
   const filteredCryptos = cryptoList?.filter((crypto) =>
     crypto.name.toLowerCase().includes(search.toLowerCase())
   );
-  //   console.log(filteredCryptos);
 
   const handleScrollToBottom = (e: React.UIEvent<HTMLDivElement>) => {
     const bottom =
@@ -53,12 +51,6 @@ export function CryptoSelect({
       });
     }
   };
-
-  //   React.useEffect(() => {
-  //     if (page > 1) {
-  //       onLoadMore(page);
-  //     }
-  //   }, [page]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
