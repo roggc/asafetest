@@ -30,6 +30,7 @@ export const authOptions: AuthOptions = {
       },
       authorize: async (credentials) => {
         if (!credentials?.email || !credentials.password) {
+          console.log("Email and password are required");
           throw new Error("Email y contraseña son requeridos");
         }
 
@@ -38,8 +39,10 @@ export const authOptions: AuthOptions = {
           user &&
           (await bcrypt.compare(credentials.password, user.password))
         ) {
+          console.log("User found and password matches");
           return { id: user.id, name: user.name, email: user.email };
         }
+        console.log("User not found or password does not");
         return null;
       },
     }),

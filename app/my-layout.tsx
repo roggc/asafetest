@@ -32,7 +32,9 @@ export default function MyLayout({
           <ThemeSwitcher />
         </div>
       </header>
-      <div className="flex flex-1  p-4 overflow-auto mt-12">{children}</div>
+      <div className="flex flex-1  p-4 overflow-auto mt-12 scrollable">
+        {children}
+      </div>
     </div>
   );
 }

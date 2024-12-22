@@ -37,6 +37,7 @@ export default function InfiniteScroll() {
     target: loader,
     onIntersect: loadMoreItems,
     enabled: !loading,
+    status,
   });
 
   if (status === "loading") {
