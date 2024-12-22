@@ -6,6 +6,7 @@ interface UseIntersectionObserverProps {
   threshold?: number;
   rootMargin?: string;
   enabled?: boolean;
+  status: string;
 }
 
 export function useIntersectionObserver({
@@ -14,6 +15,7 @@ export function useIntersectionObserver({
   threshold = 0.1,
   rootMargin = "0px",
   enabled = true,
+  status,
 }: UseIntersectionObserverProps) {
   useEffect(() => {
     if (!enabled) {
@@ -44,5 +46,5 @@ export function useIntersectionObserver({
     return () => {
       observer.unobserve(element);
     };
-  }, [target, onIntersect, threshold, rootMargin, enabled]);
+  }, [target, onIntersect, threshold, rootMargin, enabled, status]);
 }
