@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Gauge, List, LogIn } from "lucide-react";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/lib/auth";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 

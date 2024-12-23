@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 // 1. Mocks antes de importar el componente
-jest.mock("@/app/api/auth/[...nextauth]/route", () => ({
+jest.mock("@/app/lib/auth", () => ({
   // Exporta un objeto 'authOptions' vacío o mínimo
   authOptions: {},
 }));
