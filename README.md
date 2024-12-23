@@ -16,4 +16,4 @@ To run the unit tests execute the command `pnpm test`
 
 To run the cypress tests you need two terminal windows. In one you run `pnpm run dev` to start the project. In the other you run `pnpm run cypress:open` to start the cypress tests. Because you don't have the env.local file with the API key some of the tests may fail.
 
-## This project is deployed in https://cryptotrackerpro.netlify.app
+## This project is deployed in https://cryptotrackerproplus.netlify.app
